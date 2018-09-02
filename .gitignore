@@ -8,6 +8,7 @@ db.sqlite3
 AMS Database Stucture.md
 staticfiles/
 .env
+__pycache__/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
