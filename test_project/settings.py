@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+import dj_database_url
+from decouple import config
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -74,15 +75,12 @@ WSGI_APPLICATION = 'test_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+DEFAULT_DATABASE = config('DATABASE_URL',
+                          default='sqlite:///db.sqlite3',
+                          cast=dj_database_url.parse)
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test_db',
-        'USER': 'test_user',
-        'PASSWORD': 'password',
-        'HOST': 'db',
-        'PORT': 5432
-    }
+    'default': DEFAULT_DATABASE
 }
 
 
